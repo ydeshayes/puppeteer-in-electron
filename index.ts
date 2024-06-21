@@ -6,7 +6,7 @@ import {v4} from "uuid";
 type App = import("electron").App;
 type BrowserWindow = import("electron").BrowserWindow;
 type BrowserView = import("electron").BrowserView;
-type puppeteer = typeof import("puppeteer-core");
+import type { PuppeteerNode } from "puppeteer-core";
 type Browser = import("puppeteer-core").Browser;
 type Page = import("puppeteer-core").Page;
 
@@ -83,7 +83,7 @@ export const initialize = async (app: App, port = 0): Promise<void> => {
  * @param {puppeteer} puppeteer The imported puppeteer namespace.
  * @returns {Promise<Browser>} An object containing the puppeteer browser, the port, and json received from DevTools.
  */
-export const connect = async (app: App, puppeteer: puppeteer): Promise<Browser> => {
+export const connect = async (app: App, puppeteer: PuppeteerNode): Promise<Browser> => {
   if (!puppeteer) {
     throw new Error("The parameter 'puppeteer' was not passed in.");
   }
